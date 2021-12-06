@@ -4,11 +4,13 @@ import { Header } from "./components/Header";
 import { Dashboard } from "./components/Dashboard";
 import { useState } from 'react';
 import { NewTrasactionModal } from './components/NewTransactionModal';
+import { TransactionsProvider } from './TransactionsContext'
 
 Modal.setAppElement('#root')
 
 export function App() {
   const [isNewTransactionModalOpem, setIsNewTransactionModalOpem] = useState(false)
+
 
   function handleeOpemNewTransictionModal() {
     setIsNewTransactionModalOpem(true)
@@ -19,7 +21,7 @@ export function App() {
   }
   return (
 
-    <>
+    <TransactionsProvider>
       <Header onOpemNewTransactionModal={handleeOpemNewTransictionModal} />
 
       <Dashboard />
@@ -30,6 +32,6 @@ export function App() {
       />
 
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
