@@ -1,9 +1,9 @@
 import incomeImg from "../../assets/income.svg"
 import outcomeImg from "../../assets/outcome.svg"
 import Modal from "react-modal"
-import { Container } from './styles'
-import { TransactionTipeContainer } from './styles'
+import { Container, TransactionTipeContainer, RadioBox } from './styles'
 import closeImg from '../../assets/close.svg'
+import { useState } from "react"
 
 interface newTransactionModalProps {
   isOpem: boolean;
@@ -12,7 +12,13 @@ interface newTransactionModalProps {
 
 
 export function NewTrasactionModal({ isOpem, onRequestClose }: newTransactionModalProps) {
+
+  const [type, setType] = useState('deposit')
+
+
   return (
+
+
     <Modal isOpen={isOpem}
       onRequestClose={onRequestClose}
       overlayClassName="react-modal-orverlay"
@@ -33,21 +39,23 @@ export function NewTrasactionModal({ isOpem, onRequestClose }: newTransactionMod
         />
         <TransactionTipeContainer>
 
-          <button
+          <RadioBox
             type="button"
+            onClick={() => { setType('deposit') }}
           >
             <img src={incomeImg}
               alt="Entrada" />
             <span>Entrada</span>
-          </button>
+          </RadioBox>
 
-          <button
+          <RadioBox
             type="button"
+            onClick={() => { setType('withdraw') }}
           >
             <img src={outcomeImg}
               alt="Saida" />
             <span>Saida</span>
-          </button>
+          </RadioBox>
 
         </TransactionTipeContainer>
         <input type="text"
