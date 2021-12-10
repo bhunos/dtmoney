@@ -1,9 +1,10 @@
-import { useContext } from "react";
-import { TransactionsContext } from "../../TransactionsContext";
+
 import { Container } from "./styles";
+import { useTransaction } from '../../hooks/useTransactions';
+
 
 export function TransactionTable() {
-  const { transactions } = useContext(TransactionsContext)
+  const { transactions } = useTransaction()
   return (
     <Container>
       <table>
@@ -24,9 +25,8 @@ export function TransactionTable() {
                 >
                   {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(transaction.amount)}</td>
                 <td>{transaction.category}</td>
-                <td>{new Intl.DateTimeFormat('pt-BR').format(
-                  new Date(transaction.createdAt)
-                )}</td>
+                <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(transaction.createdAt))
+                }</td>
               </tr>
             )
             )
@@ -35,4 +35,8 @@ export function TransactionTable() {
       </table>
     </Container>
   )
+}
+
+function useTransactions(): { transactions: any; } {
+  throw new Error("Function not implemented.");
 }

@@ -17,16 +17,16 @@ createServer({
           title: 'Freeelancer de website',
           type: 'deposit',
           category: 'Dev',
-          amout: 6000,
-          createAt: new Date('2021-02-12 09:00:00')
+          amount: 6000,
+          createdAt: new Date('2021-02-12 09:00:00')
         },
         {
           id: 2,
           title: 'Aluguel',
           type: 'withdraw',
           category: 'Casa',
-          amout: 1100,
-          createAt: new Date('2021-02-14 07:00:00')
+          amount: 1100,
+          createdAt: new Date('2021-02-14 07:00.00')
         }
 
       ],
